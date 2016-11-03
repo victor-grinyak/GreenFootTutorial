@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=BattleCity
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ Fedor\ Kuzin\n\ @version\ 1\n
+comment1.params=
+comment1.target=BattleCity()
+comment2.params=x\ y
+comment2.target=void\ savePlayerSpawnLocation(int,\ int)
+comment3.params=x\ y
+comment3.target=void\ spawnPlayerAt(int,\ int)
+comment4.params=tank\ x\ y
+comment4.target=void\ spawnTank(Tank,\ int,\ int)
+comment5.params=bonus
+comment5.target=void\ spawnBonus(BattleCity.BonusType)
+comment6.params=
+comment6.target=void\ prepare()
+comment6.text=\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\n
+numComments=7
