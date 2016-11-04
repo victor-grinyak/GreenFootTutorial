@@ -15,6 +15,7 @@ public class Brick extends Wall
     public void act() 
     {
         // Add your action code here.
+        //
     }    
     
     @Override
