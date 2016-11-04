@@ -1,14 +1,15 @@
 #BlueJ class context
 comment0.target=Tank
 comment0.text=\n\ Write\ a\ description\ of\ class\ Tank\ here.\n\n\ @author\ Fedor\ Kuzin\n\ @version\ 1\n
-comment1.params=
-comment1.target=Tank()
+comment1.params=isPlayer\ x\ y
+comment1.target=Tank(boolean,\ int,\ int)
+comment1.text=\n\ \ \ \ public\ Tank()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ setDirection(Direction.RIGHT);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ updateAnimation();\n\ \ \ \ }\n
 comment10.params=
 comment10.target=void\ makeFire()
-comment2.params=isPlayer\ x\ y
-comment2.target=Tank(boolean,\ int,\ int)
-comment3.params=
-comment3.target=void\ act()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=time
+comment3.target=void\ setReloadTime(int)
 comment4.params=
 comment4.target=void\ updateAnimation()
 comment5.params=

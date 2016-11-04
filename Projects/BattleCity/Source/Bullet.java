@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
  */
 public class Bullet extends Actor
 {    
+    public static final int SPEED_LVL_1 = 3;
+    public static final int SPEED_LVL_2 = 5;
+    
     private int _speed;
     
     public Bullet(Direction direction, int speed)
@@ -16,7 +19,7 @@ public class Bullet extends Actor
         _speed = speed;
         
         setRotation(direction.getAngle());
-        Animation.scaleSprite(getImage(), 4);
+        Animation.scaleSprite(getImage(), BattleCity.SCALE);
     }
     
     public void act() 

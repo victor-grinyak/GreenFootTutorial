@@ -16,6 +16,8 @@ public class BattleCity extends World
         BONUS_SHOVEL
     }
 
+    public static final int SCALE = 4;
+    
     private int _player_spawn_x = 0;
     private int _player_spawn_y = 0;
 
