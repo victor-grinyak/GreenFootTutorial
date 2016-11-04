@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Write a description of class Tank here.
@@ -13,9 +15,13 @@ public class Tank extends Actor
     public static final int RELOAD_TIME_LVL3 = 40;
     
     private boolean _isPlayer = false;
-    private int _speed = 1;
+    
+    private int _speed = 2;
     private int _x = 0;
     private int _y = 0;
+    private int _prev_x = 0;
+    private int _prev_y = 0;
+    
     private Direction _direction = Direction.RIGHT;
     
     private int _gunReloadTime = RELOAD_TIME_LVL1; // The minimum delay between firing the gun.
@@ -25,7 +31,7 @@ public class Tank extends Actor
     private boolean _mirrorH = false;
     
     private static final String[] AnimList = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
-    private static final Animation _animControl = new Animation(AnimList, BattleCity.SCALE, 7);
+    private final Animation _animControl = new Animation(AnimList, BattleCity.SCALE, 3);
     
     /*
     public Tank()
@@ -51,7 +57,7 @@ public class Tank extends Actor
     
     public void act() 
     {  
-        updateAnimation();
+        //updateAnimation();
         
         if(_isPlayer){
             checkKeys();
@@ -63,10 +69,17 @@ public class Tank extends Actor
         _reloadDelayCount++;
     }    
     
-    public void setReloadTime(int time){
+    public void setReloadTime(int time)
+    {
         if(time >= 0){
             _gunReloadTime = time;
         }
+    }
+    
+    public void hit()
+    {
+        //spawn explosion first
+        getWorld().removeObject(this);
     }
     
     private void updateAnimation(){
@@ -77,7 +90,7 @@ public class Tank extends Actor
     /**
      * Check whether there are any key pressed and react to them.
      */
-    private void checkKeys() 
+    private void checkKeys()
     {
         if(Greenfoot.isKeyDown("up")){
             _direction = Direction.UP;
@@ -117,6 +130,20 @@ public class Tank extends Actor
         }        
     }
 
+    private boolean canMove(){
+        int dist = (7) * BattleCity.SCALE + 12;
+        List<Wall> walls = getNeighbours(dist, true, Wall.class);
+        
+        
+        
+        //Wall wall = (Wall) getOneIntersectingObject(Wall.class);
+        //return wall == null;
+        //List<Wall> walls = getObjectsInRange(radius, Wall.class);
+        Iterator it = walls.iterator();
+        
+        return !it.hasNext();
+    }
+    
     private void mirrorHorizontally(){
         _animControl.mirrorHorizontally();
         _mirrorH = !_mirrorH;
@@ -135,15 +162,23 @@ public class Tank extends Actor
     
     private void moveForward()
     {
-         setLocation(getX() + _speed * _direction._x , getY() + _speed * _direction._y);
-         
+        _prev_x = getX();
+        _prev_y = getY();
+            
+        setLocation(getX() + _speed * _direction._x , getY() + _speed * _direction._y);
+        
+        if(!canMove()) {
+            setLocation(_prev_x, _prev_y);
+        }
+
+        updateAnimation();
          //move(_speed);
     }
     
     private void makeFire()
     {
         if (_reloadDelayCount >= _gunReloadTime) {
-            getWorld().addObject( new Bullet(_direction, Bullet.SPEED_LVL_1), getX(), getY());
+            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX(), getY());
             
             _reloadDelayCount = 0;
         }

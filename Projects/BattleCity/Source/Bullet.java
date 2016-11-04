@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Write a description of class Bullet here.
@@ -30,7 +32,30 @@ public class Bullet extends Actor
         }
         else{
             move(_speed);
+            
+            hitWalls();
         }
         
-    }    
+    } 
+    
+    public void hitWalls(){
+        List<Wall> walls = (List<Wall>)getIntersectingObjects(Wall.class);
+        Iterator it = walls.iterator();
+        
+        if(it.hasNext()){
+            while(it.hasNext())
+                {
+                    Wall wall = (Wall)it.next();
+                    wall.hit();
+                }
+                
+            //spawn bullet explosion
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public void hitTank(){
+        Tank tank = (Tank)getOneIntersectingObject(Tank.class);
+        tank.hit();
+    }
 }
