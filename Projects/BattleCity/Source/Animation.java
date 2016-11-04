@@ -77,7 +77,7 @@ public class Animation
         }
     }
     
-    private void scaleSprite(GreenfootImage gfImg, int scale )
+    public static void scaleSprite(GreenfootImage gfImg, int scale )
     {
         BufferedImage img = gfImg.getAwtImage();//get raw java image
         
