@@ -48,9 +48,7 @@ public class Tank extends Actor
         _x = x;
         _y = y;
         
-        if(isPlayer){
-            setDirection(Direction.UP);
-        }
+        setDirection(Direction.UP);
         
         updateAnimation();
     }
@@ -58,12 +56,14 @@ public class Tank extends Actor
     public void act() 
     {  
         //updateAnimation();
+        //int[][] mapObjects = {
+        String[][] layout = { {"w", "s", "a", "d", "space"}, {"up", "down", "left", "right", "0"} };
         
         if(_isPlayer){
-            checkKeys();
+            checkKeys(layout[0]);
         }
         else{
-           moveForward();
+            checkKeys(layout[1]);
         }
         
         _reloadDelayCount++;
@@ -90,9 +90,9 @@ public class Tank extends Actor
     /**
      * Check whether there are any key pressed and react to them.
      */
-    private void checkKeys()
+    private void checkKeys(String[] layout)
     {
-        if(Greenfoot.isKeyDown("up")){
+        if(Greenfoot.isKeyDown(layout[0])){
             _direction = Direction.UP;
             setRotation(Direction.UP.getAngle());
             
@@ -100,7 +100,7 @@ public class Tank extends Actor
             
             moveForward();
         }
-        else if(Greenfoot.isKeyDown("down")){
+        else if(Greenfoot.isKeyDown(layout[1])){
             _direction = Direction.DOWN;
             setRotation(Direction.UP.getAngle());
             
@@ -108,7 +108,7 @@ public class Tank extends Actor
             
             moveForward();
         }
-        else if(Greenfoot.isKeyDown("left")) {
+        else if(Greenfoot.isKeyDown(layout[2])) {
             _direction = Direction.LEFT;
             setRotation(Direction.RIGHT.getAngle());
             
@@ -116,7 +116,7 @@ public class Tank extends Actor
             
             moveForward();
         }        
-        else if(Greenfoot.isKeyDown("right")) {
+        else if(Greenfoot.isKeyDown(layout[3])) {
             _direction = Direction.RIGHT;
             setRotation(Direction.RIGHT.getAngle());
             
@@ -125,11 +125,11 @@ public class Tank extends Actor
             moveForward();
         }
         
-        if(Greenfoot.isKeyDown("space")) {
+        if(Greenfoot.isKeyDown(layout[4])) {
             makeFire();
         }        
     }
-
+    
     private boolean canMove(){
         int dist = (7) * BattleCity.SCALE + 12;
         List<Wall> walls = getNeighbours(dist, true, Wall.class);
@@ -178,7 +178,7 @@ public class Tank extends Actor
     private void makeFire()
     {
         if (_reloadDelayCount >= _gunReloadTime) {
-            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX(), getY());
+            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
             
             _reloadDelayCount = 0;
         }
