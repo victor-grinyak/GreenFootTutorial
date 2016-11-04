@@ -1,19 +1,32 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.image.BufferedImage;
 
 /**
  * Write a description of class Bullet here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Fedor Kuzin 
+ * @version 1
  */
 public class Bullet extends Actor
-{
-    /**
-     * Act - do whatever the Bullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+{    
+    private int _speed;
+    
+    public Bullet(Direction direction, int speed)
+    {
+        _speed = speed;
+        setRotation(direction.getAngle());
+        Animation.scaleSprite(getImage(), 4);
+    }
+    
     public void act() 
     {
-        // Add your action code here.
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+            return;
+        }
+        else{
+            move(_speed);
+        }
+        
     }    
 }
