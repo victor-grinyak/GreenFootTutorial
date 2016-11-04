@@ -62,8 +62,8 @@ public class BattleCity extends World
     private void prepare()
     {
         Tank tank = new Tank(true, 100, 100);
-        addObject(tank,352,514);
-        Stone stone = new Stone();
+        addObject(tank,225,800);
+        /*Stone stone = new Stone();
         addObject(stone,357,440);
         stone.setLocation(349,434);
         Stone stone2 = new Stone();
@@ -106,8 +106,14 @@ public class BattleCity extends World
         addObject(stone6,563,384);
         stone6.setLocation(412,370);
         stone6.setLocation(412,370);
-        stone6.setLocation(413,370);
-        tank.setLocation(388,492);
-        tank.setLocation(397,484);
+        stone6.setLocation(413,370);*/
+        drawMap(this);
+        //tank.setLocation(388,492);
+        //tank.setLocation(397,484);
+    }
+    
+    private void drawMap(World BattleCity)
+    {
+        Map map = new Map(BattleCity);
     }
 }
