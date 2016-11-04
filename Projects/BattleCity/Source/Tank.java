@@ -178,7 +178,7 @@ public class Tank extends Actor
     private void makeFire()
     {
         if (_reloadDelayCount >= _gunReloadTime) {
-            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX(), getY());
+            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
             
             _reloadDelayCount = 0;
         }

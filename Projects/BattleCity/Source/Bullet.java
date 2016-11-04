@@ -34,6 +34,7 @@ public class Bullet extends Actor
             move(_speed);
             
             hitWalls();
+            hitTank();
         }
         
     } 
@@ -55,7 +56,14 @@ public class Bullet extends Actor
     }
     
     public void hitTank(){
-        Tank tank = (Tank)getOneIntersectingObject(Tank.class);
-        tank.hit();
+        try{
+            Tank tank = (Tank)getOneIntersectingObject(Tank.class);
+            if(tank != null){
+                tank.hit();
+                getWorld().removeObject(this);
+            }
+        }catch(Exception e){
+            
+        }
     }
 }
