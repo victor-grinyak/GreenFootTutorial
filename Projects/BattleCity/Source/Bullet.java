@@ -14,6 +14,7 @@ public class Bullet extends Actor
     public Bullet(Direction direction, int speed)
     {
         _speed = speed;
+        
         setRotation(direction.getAngle());
         Animation.scaleSprite(getImage(), 4);
     }

@@ -62,8 +62,5 @@ public class BattleCity extends World
         Tank tank = new Tank(true, 100, 100);
         addObject(tank,352,514);
         tank.setLocation(151,839);
-        Bullet bullet = new Bullet(Direction.UP, 3);
-        addObject(bullet,154,808);
-        bullet.setLocation(149,806);
     }
 }

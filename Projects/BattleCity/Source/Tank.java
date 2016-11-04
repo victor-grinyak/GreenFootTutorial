@@ -14,6 +14,9 @@ public class Tank extends Actor
     private int _y = 0;
     private Direction _direction = Direction.RIGHT;
     
+    private int gunReloadTime = 80;   // The minimum delay between firing the gun.
+    private int reloadDelayCount = gunReloadTime; // How long ago we fired the gun the last time.   
+    
     private boolean _mirrorV = false;
     private boolean _mirrorH = false;
     
@@ -41,7 +44,7 @@ public class Tank extends Actor
     }
     
     public void act() 
-    {        
+    {  
         updateAnimation();
         
         if(_isPlayer){
@@ -50,6 +53,8 @@ public class Tank extends Actor
         else{
            moveForward();
         }
+        
+        reloadDelayCount++;
     }    
     
     private void updateAnimation(){
@@ -124,6 +129,11 @@ public class Tank extends Actor
     
     private void makeFire()
     {
+        if (reloadDelayCount >= gunReloadTime) {
+            getWorld().addObject( new Bullet(_direction, 3), getX(), getY());
+            
+            reloadDelayCount = 0;
+        }
         
     }
 }
