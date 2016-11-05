@@ -16,7 +16,7 @@ public class Tank extends Actor
         TANK_ENEMY
     }
     
-    public static final int RELOAD_TIME_LVL1 = 10;
+    public static final int RELOAD_TIME_LVL1 = 50;
     //public static final int RELOAD_TIME_LVL2 = 60;
     //public static final int RELOAD_TIME_LVL3 = 40;
     
