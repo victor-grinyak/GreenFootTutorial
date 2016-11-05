@@ -43,9 +43,6 @@ public class Tank extends Actor
     
     private boolean _bulletFired = false;
     private boolean _btnPressedPrev = false;
-        
-    private static final GreenfootSound _engineSoundSlow = new GreenfootSound("engine_slow.mp3");
-    private static final GreenfootSound _engineSoundFast = new GreenfootSound("engine_fast.mp3");
     
     private final GreenfootSound _fireSound = new GreenfootSound("fire.mp3");
     
@@ -180,14 +177,6 @@ public class Tank extends Actor
         }       
         
         _btnPressedPrev = btnPressed;
-        /*
-        if(btnPressed && _type == TankType.TANK_PLAYER_1){
-            if(_engineSoundSlow.isPlaying())  _engineSoundSlow.stop();
-            if(!_engineSoundFast.isPlaying()) _engineSoundFast.playLoop();
-        }else{
-            if(_engineSoundFast.isPlaying())  _engineSoundFast.stop();
-            if(!_engineSoundSlow.isPlaying()) _engineSoundFast.playLoop();
-        }*/
     }
     
     private boolean canMove(){
