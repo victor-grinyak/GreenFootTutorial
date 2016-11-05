@@ -15,10 +15,12 @@ public class Bullet extends Actor
     public static final int SPEED_LVL_2 = 5;
     
     private int _speed;
+    private Tank.TankType _ownerType;
     
-    public Bullet(Direction direction, int speed)
+    public Bullet(Direction direction, int speed, Tank.TankType ownerType)
     {
         _speed = speed;
+        _ownerType = ownerType;
         
         setRotation(direction.getAngle());
         Animation.scaleSprite(getImage(), BattleCity.SCALE);
@@ -63,8 +65,9 @@ public class Bullet extends Actor
     {
         Tank tank = (Tank)getOneIntersectingObject(Tank.class);
         if(tank != null){
-            tank.hit();
-            
+            if(tank.getType() != _ownerType && !tank.isPlayer()){
+                tank.hit();
+            }
             destroy();
         }
     }
@@ -73,10 +76,12 @@ public class Bullet extends Actor
     {
         Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
         if(bullet != null){
-            World wrld = getWorld();
+            if(bullet._ownerType != _ownerType){
+                World wrld = getWorld();
             
-            wrld.removeObject(bullet);
-            wrld.removeObject(this);
+                wrld.removeObject(bullet);
+                wrld.removeObject(this);
+            }
         }
     }
     

@@ -97,6 +97,16 @@ public class Tank extends Actor
         }
     }
     
+    public TankType getType()
+    {
+        return _type;
+    }
+    
+    public boolean isPlayer()
+    {
+        return _type == TankType.TANK_PLAYER_1 || _type == TankType.TANK_PLAYER_2;
+    }
+    
     public void hit()
     {
         destroy();
@@ -229,7 +239,7 @@ public class Tank extends Actor
     private void makeFire()
     {
         if (_reloadDelayCount >= _gunReloadTime) {
-            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
+            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1, _type), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
             
             _reloadDelayCount = 0;
         }
