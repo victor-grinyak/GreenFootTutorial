@@ -15,7 +15,7 @@ public class BattleCity extends World
         BONUS_BOMB, 
         BONUS_SHOVEL
     }
-
+    
     public static final int SCALE = 4;
     
     private int _player_spawn_x = 0;
@@ -25,7 +25,7 @@ public class BattleCity extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         // 8 pixels per block, 13 blocks, 2x scale, 60 pixels for right panel.
-        super(16*13*4 + 128, 16*13*4, 1); 
+        super(16*13*4, 16*13*4, 1); 
         
         GreenfootImage background = getBackground();
         background.setColor(Color.BLACK);
@@ -61,9 +61,9 @@ public class BattleCity extends World
      */
     private void prepare()
     {
-        Tank tankPlayer1 = new Tank(true, 100, 100);
+        Tank tankPlayer1 = new Tank(Tank.TankType.TANK_PLAYER_1, 100, 100);
         addObject(tankPlayer1,225,800);
-        Tank tankPlayer2 = new Tank(false, 100, 100);
+        Tank tankPlayer2 = new Tank(Tank.TankType.TANK_PLAYER_2, 100, 100);
         addObject(tankPlayer2, 609, 800);
 
         drawMap(this);
