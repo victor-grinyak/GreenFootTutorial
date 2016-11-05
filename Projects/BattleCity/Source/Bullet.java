@@ -46,6 +46,7 @@ public class Bullet extends Actor
                 hitWalls();
                 hitTank();
                 hitBullet();
+                hitCamp();
             }catch(Exception e){
                 //Что-то пошло не так
             }
@@ -100,6 +101,16 @@ public class Bullet extends Actor
                 wrld.removeObject(bullet);
                 wrld.removeObject(this);
             }
+        }
+    }
+    
+    public void hitCamp()
+    {
+        Camp camp = (Camp)getOneIntersectingObject(Camp.class);
+        
+        if(camp != null){
+            camp.hit(); 
+            destroy();
         }
     }
     

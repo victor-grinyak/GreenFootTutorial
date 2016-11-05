@@ -65,6 +65,14 @@ public class BattleCity extends World
         addObject(tankPlayer1,225,800);
         Tank tankPlayer2 = new Tank(Tank.TankType.TANK_PLAYER_2, 100, 100);
         addObject(tankPlayer2, 609, 800);
+        Tank tankEnemy = new Tank(Tank.TankType.TANK_ENEMY, 100, 100);
+        addObject(tankEnemy, 416, 700);
+        
+        Camp camp = new Camp();
+        addObject(camp, 416, 800);
+        
+        Bonus bonus = new Bonus(); //тест бонуса лопата
+        addObject(camp, 296, 800);
 
         drawMap(this);
         //tank.setLocation(388,492);

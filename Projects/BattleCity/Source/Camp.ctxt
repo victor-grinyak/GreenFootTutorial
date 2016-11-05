@@ -1,7 +1,16 @@
 #BlueJ class context
 comment0.target=Camp
-comment0.text=\n\ Write\ a\ description\ of\ class\ Camp\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Camp\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Camp\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=2
+comment1.target=Camp()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ drawBrick()
+comment4.params=
+comment4.target=void\ drawStone()
+comment5.params=
+comment5.target=void\ deleteStone()
+comment6.params=
+comment6.target=void\ hit()
+numComments=7
