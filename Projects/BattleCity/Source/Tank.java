@@ -180,12 +180,11 @@ public class Tank extends Actor
     }
     
     private boolean canMove(){
-        int dist = (7) * BattleCity.SCALE + 13;
-        
-        List<Wall> walls = getNeighbours(dist, true, Wall.class);
-        Iterator it = walls.iterator();
-        
-        return !it.hasNext() && !atBorder();
+        Wall wall = (Wall)getOneIntersectingObject(Wall.class); 
+        Camp camp = (Camp)getOneIntersectingObject(Camp.class); 
+        Tank tank = (Tank)getOneIntersectingObject(Tank.class); 
+
+        return wall == null && tank == null && camp == null && !atBorder(); 
     }
     
     private boolean atBorder(){
