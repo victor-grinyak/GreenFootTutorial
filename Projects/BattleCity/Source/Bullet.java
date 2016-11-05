@@ -16,11 +16,15 @@ public class Bullet extends Actor
     
     private int _speed;
     private Tank.TankType _ownerType;
+    private Tank _owner;
     
-    public Bullet(Direction direction, int speed, Tank.TankType ownerType)
+    public Bullet(Direction direction, int speed, Tank.TankType ownerType, Tank owner)
     {
         _speed = speed;
         _ownerType = ownerType;
+        _owner = owner;
+        
+        _owner.setBulletFired(true);
         
         setRotation(direction.getAngle());
         Animation.scaleSprite(getImage(), BattleCity.SCALE);
@@ -29,7 +33,8 @@ public class Bullet extends Actor
     public void act() 
     {
         if(isAtEdge()){
-            getWorld().removeObject(this);
+            //getWorld().removeObject(this);
+            destroy();
             return;
         }
         else{
@@ -99,5 +104,12 @@ public class Bullet extends Actor
     {
         makeExplosion();
         getWorld().removeObject(this);
+        
+        try{
+            _owner.setBulletFired(false);
+        }catch(Exception ex){
+            //no obj
+        }
+        
     }
 }

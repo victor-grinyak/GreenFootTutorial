@@ -16,9 +16,13 @@ public class Tank extends Actor
         TANK_ENEMY
     }
     
-    public static final int RELOAD_TIME_LVL1 = 80;
-    public static final int RELOAD_TIME_LVL2 = 60;
-    public static final int RELOAD_TIME_LVL3 = 40;
+    public static final int RELOAD_TIME_LVL1 = 10;
+    //public static final int RELOAD_TIME_LVL2 = 60;
+    //public static final int RELOAD_TIME_LVL3 = 40;
+    
+    private static final String[] AnimListYellow = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
+    private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
+    private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
     
     //private boolean _isPlayer = false;
     private TankType _type = TankType.TANK_ENEMY;
@@ -37,9 +41,13 @@ public class Tank extends Actor
     private boolean _mirrorV = false;
     private boolean _mirrorH = false;
     
-    private static final String[] AnimListYellow = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
-    private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
-    private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
+    private boolean _bulletFired = false;
+    private boolean _btnPressedPrev = false;
+        
+    private static final GreenfootSound _engineSoundSlow = new GreenfootSound("engine_slow.mp3");
+    private static final GreenfootSound _engineSoundFast = new GreenfootSound("engine_fast.mp3");
+    
+    private final GreenfootSound _fireSound = new GreenfootSound("fire.mp3");
     
     private Animation _animControl;
 
@@ -77,6 +85,7 @@ public class Tank extends Actor
         switch(_type){
             case TANK_PLAYER_1:
                 checkKeys(layout[0]);
+                
             break;
             
             case TANK_PLAYER_2:
@@ -102,6 +111,11 @@ public class Tank extends Actor
         return _type;
     }
     
+    public void setBulletFired(boolean fired)
+    {
+        _bulletFired = fired;
+    }
+    
     public boolean isPlayer()
     {
         return _type == TankType.TANK_PLAYER_1 || _type == TankType.TANK_PLAYER_2;
@@ -122,6 +136,8 @@ public class Tank extends Actor
      */
     private void checkKeys(String[] layout)
     {
+        boolean btnPressed = false;
+        
         if(Greenfoot.isKeyDown(layout[0])){
             _direction = Direction.UP;
             setRotation(Direction.UP.getAngle());
@@ -156,8 +172,22 @@ public class Tank extends Actor
         }
         
         if(Greenfoot.isKeyDown(layout[4])) {
-            makeFire();
-        }        
+            if(!_btnPressedPrev){
+               makeFire();
+            }
+
+            btnPressed = true;
+        }       
+        
+        _btnPressedPrev = btnPressed;
+        /*
+        if(btnPressed && _type == TankType.TANK_PLAYER_1){
+            if(_engineSoundSlow.isPlaying())  _engineSoundSlow.stop();
+            if(!_engineSoundFast.isPlaying()) _engineSoundFast.playLoop();
+        }else{
+            if(_engineSoundFast.isPlaying())  _engineSoundFast.stop();
+            if(!_engineSoundSlow.isPlaying()) _engineSoundFast.playLoop();
+        }*/
     }
     
     private boolean canMove(){
@@ -238,10 +268,12 @@ public class Tank extends Actor
     
     private void makeFire()
     {
-        if (_reloadDelayCount >= _gunReloadTime) {
-            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1, _type), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
+        if (_reloadDelayCount >= _gunReloadTime && !_bulletFired) {
+            getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1, _type, this), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
             
             _reloadDelayCount = 0;
+            
+            _fireSound.play();
         }
         
     }

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Bullet
 comment0.text=\n\ Write\ a\ description\ of\ class\ Bullet\ here.\n\ \n\ @author\ Fedor\ Kuzin\ \n\ @version\ 1\n
-comment1.params=direction\ speed\ ownerType
-comment1.target=Bullet(Direction,\ int,\ Tank.TankType)
+comment1.params=direction\ speed\ ownerType\ owner
+comment1.target=Bullet(Direction,\ int,\ Tank.TankType,\ Tank)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
