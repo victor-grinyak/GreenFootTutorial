@@ -10,11 +10,18 @@ import java.util.List;
  */
 public class Tank extends Actor
 {   
+    public enum TankType {
+        TANK_PLAYER_1, 
+        TANK_PLAYER_2, 
+        TANK_ENEMY
+    }
+    
     public static final int RELOAD_TIME_LVL1 = 80;
     public static final int RELOAD_TIME_LVL2 = 60;
     public static final int RELOAD_TIME_LVL3 = 40;
     
-    private boolean _isPlayer = false;
+    //private boolean _isPlayer = false;
+    private TankType _type = TankType.TANK_ENEMY;
     
     private int _speed = 2;
     private int _x = 0;
@@ -30,42 +37,56 @@ public class Tank extends Actor
     private boolean _mirrorV = false;
     private boolean _mirrorH = false;
     
-    private static final String[] AnimList = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
-    private final Animation _animControl = new Animation(AnimList, BattleCity.SCALE, 3);
+    private static final String[] AnimListYellow = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
+    private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
+    private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
     
-    /*
-    public Tank()
+    private Animation _animControl;
+
+    public Tank(TankType type, int x, int y)
     {
-        setDirection(Direction.RIGHT);
-        
-        updateAnimation();
-    }
-    */
-   
-    public Tank(boolean isPlayer, int x, int y)
-    {
-        _isPlayer = isPlayer;
         _x = x;
         _y = y;
+        _type = type;
         
         setDirection(Direction.UP);
+        
+        switch(_type){
+            case TANK_PLAYER_1:
+                 _animControl = new Animation(AnimListYellow, BattleCity.SCALE, 3);
+            break;
+            
+            case TANK_PLAYER_2:
+                 _animControl = new Animation(AnimListGreen, BattleCity.SCALE, 3);
+            break;
+            
+            case TANK_ENEMY:
+                _animControl = new Animation(AnimListGrey, BattleCity.SCALE, 3);
+            break;
+        }
         
         updateAnimation();
     }
     
     public void act() 
     {  
-        //updateAnimation();
-        //int[][] mapObjects = {
-        String[][] layout = { {"w", "s", "a", "d", "space"}, {"up", "down", "left", "right", "0"} };
+        String[][] layout = { {"w", "s", "a", "d", "space"}, 
+                              {"up", "down", "left", "right", "0"} 
+                            };
         
-        if(_isPlayer){
-            checkKeys(layout[0]);
+        switch(_type){
+            case TANK_PLAYER_1:
+                checkKeys(layout[0]);
+            break;
+            
+            case TANK_PLAYER_2:
+                checkKeys(layout[1]);
+            break;
+            
+            case TANK_ENEMY:
+            break;
         }
-        else{
-            checkKeys(layout[1]);
-        }
-        
+
         _reloadDelayCount++;
     }    
     
@@ -130,7 +151,7 @@ public class Tank extends Actor
     }
     
     private boolean canMove(){
-        int dist = (7) * BattleCity.SCALE + 12;
+        int dist = (7) * BattleCity.SCALE + 13;
         
         List<Wall> walls = getNeighbours(dist, true, Wall.class);
         Iterator it = walls.iterator();

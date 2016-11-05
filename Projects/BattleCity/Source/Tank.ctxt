@@ -1,9 +1,8 @@
 #BlueJ class context
 comment0.target=Tank
 comment0.text=\n\ Write\ a\ description\ of\ class\ Tank\ here.\n\n\ @author\ Fedor\ Kuzin\n\ @version\ 1\n
-comment1.params=isPlayer\ x\ y
-comment1.target=Tank(boolean,\ int,\ int)
-comment1.text=\n\ \ \ \ public\ Tank()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ setDirection(Direction.RIGHT);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ updateAnimation();\n\ \ \ \ }\n
+comment1.params=type\ x\ y
+comment1.target=Tank(Tank.TankType,\ int,\ int)
 comment10.params=
 comment10.target=void\ mirrorVertically()
 comment11.params=direction
