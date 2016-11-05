@@ -32,14 +32,19 @@ public class Bullet extends Actor
         }
         else{
             move(_speed);
-            
-            hitWalls();
-            hitTank();
+            try{
+                hitWalls();
+                hitTank();
+                hitBullet();
+            }catch(Exception e){
+                //Что-то пошло не так
+            }
         }
         
     } 
     
-    public void hitWalls(){
+    public void hitWalls()
+    {
         List<Wall> walls = (List<Wall>)getIntersectingObjects(Wall.class);
         Iterator it = walls.iterator();
         
@@ -50,20 +55,44 @@ public class Bullet extends Actor
                     wall.hit();
                 }
                 
-            //spawn bullet explosion
-            getWorld().removeObject(this);
+            destroy();
         }
     }
     
-    public void hitTank(){
-        try{
-            Tank tank = (Tank)getOneIntersectingObject(Tank.class);
-            if(tank != null){
-                tank.hit();
-                getWorld().removeObject(this);
-            }
-        }catch(Exception e){
+    public void hitTank()
+    {
+        Tank tank = (Tank)getOneIntersectingObject(Tank.class);
+        if(tank != null){
+            tank.hit();
             
+            destroy();
         }
+    }
+    
+    public void hitBullet()
+    {
+        Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
+        if(bullet != null){
+            World wrld = getWorld();
+            
+            wrld.removeObject(bullet);
+            wrld.removeObject(this);
+        }
+    }
+    
+    private void makeExplosion()
+    {
+        int frameDelay = 3;
+        String[] frames = {"explosion_bullet_anim1.png", "explosion_bullet_anim2.png", "explosion_bullet_anim3.png"};
+        
+        Explosion expl = new Explosion(frames, frameDelay);
+        
+        getWorld().addObject(expl, getX(), getY());
+    }
+    
+    private void destroy()
+    {
+        makeExplosion();
+        getWorld().removeObject(this);
     }
 }

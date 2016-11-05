@@ -78,8 +78,7 @@ public class Tank extends Actor
     
     public void hit()
     {
-        //spawn explosion first
-        getWorld().removeObject(this);
+        destroy();
     }
     
     private void updateAnimation(){
@@ -132,16 +131,47 @@ public class Tank extends Actor
     
     private boolean canMove(){
         int dist = (7) * BattleCity.SCALE + 12;
+        
         List<Wall> walls = getNeighbours(dist, true, Wall.class);
-        
-        
-        
-        //Wall wall = (Wall) getOneIntersectingObject(Wall.class);
-        //return wall == null;
-        //List<Wall> walls = getObjectsInRange(radius, Wall.class);
         Iterator it = walls.iterator();
         
-        return !it.hasNext();
+        return !it.hasNext() && !atBorder();
+    }
+    
+    private boolean atBorder(){
+        int dist = (7) * BattleCity.SCALE;
+        
+        int map_w = getWorld().getWidth();
+        int map_h = getWorld().getHeight();
+        
+        int map_x = 0;
+        int map_y = 0;
+        
+        switch(_direction){
+            case UP:            
+            case DOWN:
+                dist *= _direction._y;
+                
+                int y = getY() + dist;
+                
+                if(map_y > y || map_y + map_h < y){
+                    return true;
+                }
+            break;
+            
+            case RIGHT:
+            case LEFT:
+                dist *= _direction._x;
+                
+                int x = getX() + dist;
+                
+                if(map_x > x || map_x + map_w < x){
+                    return true;
+                }
+            break;
+        }
+        
+        return false;
     }
     
     private void mirrorHorizontally(){
@@ -183,5 +213,21 @@ public class Tank extends Actor
             _reloadDelayCount = 0;
         }
         
+    }
+    
+    private void makeExplosion()
+    {
+        int frameDelay = 3;
+        String[] frames = {"explosion_tank_anim1.png", "explosion_tank_anim2.png"};
+        
+        Explosion expl = new Explosion(frames, frameDelay);
+        
+        getWorld().addObject(expl, getX(), getY());
+    }
+    
+    private void destroy()
+    {
+        makeExplosion();
+        getWorld().removeObject(this);
     }
 }

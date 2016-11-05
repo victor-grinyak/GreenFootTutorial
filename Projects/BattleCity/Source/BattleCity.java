@@ -64,11 +64,13 @@ public class BattleCity extends World
         Tank tankPlayer1 = new Tank(true, 100, 100);
         addObject(tankPlayer1,225,800);
         Tank tankPlayer2 = new Tank(false, 100, 100);
-        addObject(tankPlayer2,355,800);
+        addObject(tankPlayer2, 609, 800);
 
         drawMap(this);
         //tank.setLocation(388,492);
         //tank.setLocation(397,484);
+        //tank2.setLocation(608,799);
+        //tank2.setLocation(609,800);
     }
     
     private void drawMap(World BattleCity)

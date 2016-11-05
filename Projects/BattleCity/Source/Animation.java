@@ -42,18 +42,29 @@ public class Animation
         }
     }
     
-    public GreenfootImage getFrame(){
+    public void setPause(boolean pause)
+    {
+        _pause = pause;
+    }
+    
+    public GreenfootImage getFrame()
+    {
         if(_Frames == null) return null;
         return _Frames[_current_frame];
     }
     
-    public void nextFrame()
+    public int getFrameNum()
     {
-        if(_pause || _Frames == null) return;
+        return _current_frame;
+    }
+    
+    public boolean nextFrame()
+    {
+        if(_pause || _Frames == null) return false;
         
         if(_skipCounter < _skip){
             ++_skipCounter;
-            return;
+            return false;
         }else{
             _skipCounter = 0;
         }
@@ -61,6 +72,8 @@ public class Animation
         if(++_current_frame >= _Frames.length){
             _current_frame = 0;
         }
+        
+        return true;
     }
     
     public void mirrorVertically()

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Explosion
+comment0.text=\n\ Write\ a\ description\ of\ class\ Explosion\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=animFrames\ frameDelay
+comment1.target=Explosion(java.lang.String[],\ int)
+comment2.params=
+comment2.target=void\ act()
+numComments=3
