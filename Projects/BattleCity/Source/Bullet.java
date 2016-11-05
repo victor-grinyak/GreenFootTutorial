@@ -90,6 +90,13 @@ public class Bullet extends Actor
             if(bullet._ownerType != _ownerType){
                 World wrld = getWorld();
             
+                try{
+                    bullet._owner.setBulletFired(false);
+                    this._owner.setBulletFired(false);
+                }catch(Exception ex){
+                    //no obj
+                }
+                
                 wrld.removeObject(bullet);
                 wrld.removeObject(this);
             }
@@ -116,6 +123,5 @@ public class Bullet extends Actor
         }catch(Exception ex){
             //no obj
         }
-        
     }
 }
