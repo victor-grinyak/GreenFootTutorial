@@ -18,6 +18,9 @@ public class Bullet extends Actor
     private Tank.TankType _ownerType;
     private Tank _owner;
     
+    private final GreenfootSound _notPiercedSound = new GreenfootSound("armor_not_pierced_by_player_01.mp3");
+    private final GreenfootSound _vehicleDestroyed = new GreenfootSound("vehicle_destroyed_01.mp3");
+    
     public Bullet(Direction direction, int speed, Tank.TankType ownerType, Tank owner)
     {
         _speed = speed;
@@ -72,6 +75,9 @@ public class Bullet extends Actor
         if(tank != null){
             if(tank.getType() != _ownerType && !tank.isPlayer()){
                 tank.hit();
+                _vehicleDestroyed.play();
+            }else{
+                _notPiercedSound.play();
             }
             destroy();
         }
