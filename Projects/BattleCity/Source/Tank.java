@@ -273,7 +273,7 @@ public class Tank extends Actor
             
             _reloadDelayCount = 0;
             
-            _fireSound.play();
+            if(isPlayer()) _fireSound.play();
         }
         
     }
