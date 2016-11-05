@@ -72,7 +72,7 @@ public class BattleCity extends World
         addObject(camp, 416, 800);
         
         Bonus bonus = new Bonus(); //тест бонуса лопата
-        addObject(camp, 296, 800);
+        addObject(bonus, 290, 736);
 
         drawMap(this);
         //tank.setLocation(388,492);
