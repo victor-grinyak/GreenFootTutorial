@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sun Nov 06 02:13:04 VLAT 2016
+#Sun Nov 06 12:13:51 VLAT 2016
 dependency32.to=Stone
 target2.width=80
 editor.fx.0.height=700
@@ -110,7 +110,7 @@ mainWindow.y=52
 editor.swing.0.y=52
 dependency35.from=Tank
 target5.showInterface=false
-mainWindow.x=367
+mainWindow.x=270
 editor.swing.0.x=65
 dependency19.from=BattleCity
 dependency16.to=Wall
@@ -126,7 +126,7 @@ target14.width=80
 target14.y=190
 target13.typeParameters=
 target14.x=140
-editor.swing.0.width=1160
+editor.swing.0.width=1161
 target6.name=Direction
 target9.height=50
 dependency23.to=Explosion
