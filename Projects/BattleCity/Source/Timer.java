@@ -1,7 +1,7 @@
 public class Timer  
 { 
     public static long getTime(){
-        return System.currentTimeMillis() / 1000L;
+        return System.currentTimeMillis();
     }
 
     private long _range = 0;
@@ -11,10 +11,12 @@ public class Timer
     public void reset()
     {
         _startTime = getTime();
+        updateFinishTime();
     }
     
     public void setRange(long range){
         _range = range;
+        updateFinishTime();
     }
     
     public long getRange()
@@ -30,5 +32,10 @@ public class Timer
     public boolean outRange()
     {
         return getTime() >= _finishTime;
+    }
+    
+    private void updateFinishTime()
+    {
+        _finishTime = _startTime + _range;
     }
 }
