@@ -1,5 +1,8 @@
 public class Timer  
 { 
+    public static final long SECOND = 1000L;
+    public static final long MINUTE = 60000L;
+    
     public static long getTime(){
         return System.currentTimeMillis();
     }
