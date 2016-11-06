@@ -16,7 +16,7 @@ public class Tank extends Actor
         TANK_ENEMY
     }
     
-    public static final int RELOAD_TIME_LVL1 = 50;
+    public static final int RELOAD_TIME_LVL1 = 500;
     //public static final int RELOAD_TIME_LVL2 = 60;
     //public static final int RELOAD_TIME_LVL3 = 40;
     
@@ -24,7 +24,6 @@ public class Tank extends Actor
     private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
     private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
     
-    //private boolean _isPlayer = false;
     private TankType _type = TankType.TANK_ENEMY;
     
     private int _speed = 2;
@@ -34,9 +33,7 @@ public class Tank extends Actor
     private int _prev_y = 0;
     
     private Direction _direction = Direction.RIGHT;
-    
-    private int _gunReloadTime = RELOAD_TIME_LVL1; // The minimum delay between firing the gun.
-    private int _reloadDelayCount = _gunReloadTime; // How long ago we fired the gun the last time.   
+    private Timer _reloadTimer = new Timer();
     
     private boolean _mirrorV = false;
     private boolean _mirrorH = false;
@@ -56,17 +53,22 @@ public class Tank extends Actor
         
         setDirection(Direction.UP);
         
+        _reloadTimer.setRange(RELOAD_TIME_LVL1);
+        //_reloadTimer.reset();
+        
+        final int animDelay = 50;
+        
         switch(_type){
             case TANK_PLAYER_1:
-                 _animControl = new Animation(AnimListYellow, BattleCity.SCALE, 3);
+                 _animControl = new Animation(AnimListYellow, BattleCity.SCALE, animDelay);
             break;
             
             case TANK_PLAYER_2:
-                 _animControl = new Animation(AnimListGreen, BattleCity.SCALE, 3);
+                 _animControl = new Animation(AnimListGreen, BattleCity.SCALE, animDelay);
             break;
             
             case TANK_ENEMY:
-                _animControl = new Animation(AnimListGrey, BattleCity.SCALE, 3);
+                _animControl = new Animation(AnimListGrey, BattleCity.SCALE, animDelay);
             break;
         }
         
@@ -76,7 +78,7 @@ public class Tank extends Actor
     public void act() 
     {  
         String[][] layout = { {"w", "s", "a", "d", "space"}, 
-                              {"up", "down", "left", "right", "0"} 
+                              {"up", "down", "left", "right", "shift"} 
                             };
         
         switch(_type){
@@ -92,14 +94,12 @@ public class Tank extends Actor
             case TANK_ENEMY:
             break;
         }
-
-        _reloadDelayCount++;
     }    
     
     public void setReloadTime(int time)
     {
         if(time >= 0){
-            _gunReloadTime = time;
+            _reloadTimer.setRange(time);
         }
     }
     
@@ -256,11 +256,11 @@ public class Tank extends Actor
     
     private void makeFire()
     {
-        if (_reloadDelayCount >= _gunReloadTime && !_bulletFired) {
+        if (_reloadTimer.outRange() && !_bulletFired) {
+            _reloadTimer.reset();
+            
             getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1, _type, this), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
-            
-            _reloadDelayCount = 0;
-            
+                       
             if(isPlayer()) _fireSound.play();
         }
         
