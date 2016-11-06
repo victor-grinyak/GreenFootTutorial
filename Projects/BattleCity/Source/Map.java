@@ -19,8 +19,8 @@ public class Map
                                    {2,1,1,1,0,0,0,0,0,1,1,1,2},
                                    {0,0,0,0,0,1,0,1,0,0,0,0,0},
                                    {0,1,0,1,0,1,1,1,0,1,0,1,0},
-                                   {0,1,0,1,0,1,0,1,0,1,0,1,0},
-                                   {0,1,0,1,0,0,0,0,0,1,0,1,0},
+                                   {0,1,0,1,3,1,0,1,0,1,0,1,0},
+                                   {0,1,0,1,3,0,0,0,0,1,0,1,0},
                                    {0,0,0,0,0,0,0,0,0,0,0,0,0}
                                  };
  
@@ -38,6 +38,7 @@ public class Map
         }
        */ 
         Wall[][][] wall = new Wall[13][13][4];
+        Bonus[][] bonuses = new Bonus[13][13];
        
         int x = 16;
         int y = 16;
@@ -46,6 +47,8 @@ public class Map
         {
             for (int j = 0; j < 13; j++)
             {
+                if ( mapObjects[i][j] == 3) {bonuses[i][j] = new Bonus();}//Бонусы
+                
                 for ( int k = 0; k < 4; k++ )
                 {
                     if ( mapObjects[i][j] == 1) {wall[i][j][k] = new Brick();}
@@ -59,10 +62,12 @@ public class Map
         {
             for (int j = 0; j < 13; j++)
             {
+                int _x = x + 64*j;
+                int _y = y + 64*i;
+                if ( mapObjects[i][j] == 3 ) {BattleCity.addObject(bonuses[i][j], _x + 16, _y + 16);}
+                
                 if ( mapObjects[i][j] == 1 || mapObjects[i][j] == 2 )
                 {
-                    int _x = x + 64*j;
-                    int _y = y + 64*i;
                     for (int k = 0; k < 4; k++)
                     {
                         if ( k < 2 )

@@ -52,8 +52,8 @@ public class BattleCity extends World
         Camp camp = new Camp();
         addObject(camp, 416, 800);
         
-        Bonus bonus = new Bonus(); //тест бонуса лопата
-        addObject(bonus, 290, 736);
+        //Bonus bonus = new Bonus(); //тест бонуса лопата
+        //addObject(bonus, 290, 736);
 
         drawMap();
     }
