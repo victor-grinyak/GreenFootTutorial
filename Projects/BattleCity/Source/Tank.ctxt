@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Tank
 comment0.text=\n\ Write\ a\ description\ of\ class\ Tank\ here.\n\n\ @author\ Fedor\ Kuzin\n\ @version\ 1\n
-comment1.params=type\ x\ y
-comment1.target=Tank(Tank.TankType,\ int,\ int)
+comment1.params=type
+comment1.target=Tank(Tank.Type)
 comment10.params=
 comment10.target=boolean\ canMove()
 comment11.params=
@@ -26,7 +26,7 @@ comment2.target=void\ act()
 comment3.params=time
 comment3.target=void\ setReloadTime(int)
 comment4.params=
-comment4.target=Tank.TankType\ getType()
+comment4.target=Tank.Type\ getType()
 comment5.params=fired
 comment5.target=void\ setBulletFired(boolean)
 comment6.params=

@@ -15,13 +15,13 @@ public class Bullet extends Actor
     public static final int SPEED_LVL_2 = 5;
     
     private int _speed;
-    private Tank.TankType _ownerType;
+    private Tank.Type _ownerType;
     private Tank _owner;
     
     private final GreenfootSound _notPiercedSound = new GreenfootSound("armor_not_pierced_by_player_01.mp3");
     private final GreenfootSound _vehicleDestroyed = new GreenfootSound("vehicle_destroyed_01.mp3");
     
-    public Bullet(Direction direction, int speed, Tank.TankType ownerType, Tank owner)
+    public Bullet(Direction direction, int speed, Tank.Type ownerType, Tank owner)
     {
         _speed = speed;
         _ownerType = ownerType;

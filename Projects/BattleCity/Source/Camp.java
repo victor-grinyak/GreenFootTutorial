@@ -103,5 +103,6 @@ public class Camp extends Actor
     public void hit()
     {
         setImage("camp_dead.png");
+        Animation.scaleSprite(getImage(), BattleCity.SCALE);
     }    
 }

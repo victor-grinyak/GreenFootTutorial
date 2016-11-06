@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Tank extends Actor
 {   
-    public enum TankType {
-        TANK_PLAYER_1, 
-        TANK_PLAYER_2, 
-        TANK_ENEMY
+    public enum Type {
+        PLAYER_1, 
+        PLAYER_2, 
+        ENEMY
     }
     
     public static final int RELOAD_TIME_LVL1 = 500;
@@ -24,7 +24,7 @@ public class Tank extends Actor
     private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
     private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
     
-    private TankType _type = TankType.TANK_ENEMY;
+    private Type _type = Type.ENEMY;
     
     private int _speed = 2;
     private int _x = 0;
@@ -45,10 +45,8 @@ public class Tank extends Actor
     
     private Animation _animControl;
 
-    public Tank(TankType type, int x, int y)
+    public Tank(Type type)
     {
-        _x = x;
-        _y = y;
         _type = type;
         
         setDirection(Direction.UP);
@@ -59,15 +57,15 @@ public class Tank extends Actor
         final int animDelay = 50;
         
         switch(_type){
-            case TANK_PLAYER_1:
+            case PLAYER_1:
                  _animControl = new Animation(AnimListYellow, BattleCity.SCALE, animDelay);
             break;
             
-            case TANK_PLAYER_2:
+            case PLAYER_2:
                  _animControl = new Animation(AnimListGreen, BattleCity.SCALE, animDelay);
             break;
             
-            case TANK_ENEMY:
+            case ENEMY:
                 _animControl = new Animation(AnimListGrey, BattleCity.SCALE, animDelay);
             break;
         }
@@ -82,16 +80,16 @@ public class Tank extends Actor
                             };
         
         switch(_type){
-            case TANK_PLAYER_1:
+            case PLAYER_1:
                 checkKeys(layout[0]);
                 
             break;
             
-            case TANK_PLAYER_2:
+            case PLAYER_2:
                 checkKeys(layout[1]);
             break;
             
-            case TANK_ENEMY:
+            case ENEMY:
             break;
         }
     }    
@@ -103,7 +101,7 @@ public class Tank extends Actor
         }
     }
     
-    public TankType getType()
+    public Type getType()
     {
         return _type;
     }
@@ -115,7 +113,7 @@ public class Tank extends Actor
     
     public boolean isPlayer()
     {
-        return _type == TankType.TANK_PLAYER_1 || _type == TankType.TANK_PLAYER_2;
+        return _type == Type.PLAYER_1 || _type == Type.PLAYER_2;
     }
     
     public void hit()

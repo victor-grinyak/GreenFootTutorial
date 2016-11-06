@@ -1,19 +1,11 @@
 #BlueJ class context
 comment0.target=BattleCity
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\r\n\ \r\n\ @author\ Fedor\ Kuzin\r\n\ @version\ 1\r\n
+comment0.text=\n\ \u041A\u043B\u043E\u043D\ \u0438\u0433\u0440\u044B\ BattleCity\n\ \n\ @author\ Fedor\ Kuzin\n\ @author\ Vitaliy\ Vitushkin\n\ @version\ 1\n
 comment1.params=
 comment1.target=BattleCity()
-comment2.params=x\ y
-comment2.target=void\ savePlayerSpawnLocation(int,\ int)
-comment3.params=x\ y
-comment3.target=void\ spawnPlayerAt(int,\ int)
-comment4.params=tank\ x\ y
-comment4.target=void\ spawnTank(Tank,\ int,\ int)
-comment5.params=bonus
-comment5.target=void\ spawnBonus(BattleCity.BonusType)
-comment6.params=
-comment6.target=void\ prepare()
-comment6.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
-comment7.params=BattleCity
-comment7.target=void\ drawMap(greenfoot.World)
-numComments=8
+comment2.params=
+comment2.target=void\ prepare()
+comment2.text=\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\n
+comment3.params=
+comment3.target=void\ drawMap()
+numComments=4

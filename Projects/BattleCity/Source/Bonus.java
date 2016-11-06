@@ -8,6 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bonus extends Actor
 {
+    public enum BonusType {
+        TANK, 
+        STAR, 
+        BOMB, 
+        SHOVEL
+    }
+    
     /**
      * Act - do whatever the Bonus wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
