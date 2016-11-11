@@ -18,9 +18,17 @@ public class Camp extends Actor
     private int x = 16 + 352;
     private int y = 16 + 736;
     
+    private static Camp _staticCamp;
+    
+    public static Camp getCamp()
+    {
+        return _staticCamp;
+    }
+    
     public Camp()
     {
         Animation.scaleSprite(getImage(), BattleCity.SCALE);
+        _staticCamp = this;
     }
     
     public void act()

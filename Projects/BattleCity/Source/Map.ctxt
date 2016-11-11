@@ -1,6 +1,14 @@
 #BlueJ class context
 comment0.target=Map
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Map\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=BattleCity
-comment1.target=Map(greenfoot.World)
-numComments=2
+comment0.text=\n\ Write\ a\ description\ of\ class\ Map\ here.\n\n\ @author\ Vitaliy\ Vitushkin\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=mapSize\ blockSize
+comment1.target=Map(int,\ int)
+comment2.params=world
+comment2.target=void\ build(greenfoot.World)
+comment3.params=
+comment3.target=int\ getOffset()
+comment4.params=
+comment4.target=int\ getSize()
+comment5.params=x\ y
+comment5.target=boolean\ isInside(int,\ int)
+numComments=6

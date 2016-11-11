@@ -21,13 +21,17 @@ public class BattleCity extends World
     
     public static final int SCALE = 4;
     
-    private static final int blocks = 13;
-    private static final int blockSize = 16;
-    private static final int mapSize = blocks * blockSize * SCALE;
-
+    public static final int blocks = 13;
+    public static final int blockSize = 16;
+    public static final int mapSize = blocks * blockSize * SCALE;
+    
+    private Map _map = new Map(blocks, blockSize);
+    private GameState _state = GameState.GAME;
+    
+    
     public BattleCity()
     {
-        super(mapSize, mapSize, 1); 
+        super(mapSize, mapSize, 1, false); 
         
         GreenfootImage background = getBackground();
         background.setColor(Color.BLACK);
@@ -36,30 +40,79 @@ public class BattleCity extends World
         prepare();
     }
 
+    public void act()
+    {
+        switch(_state)
+        {
+            case MENU:
+            break;
+            
+            case GAME_STARTING:
+            break;
+            
+            case PAUSE:
+            break;
+            
+            case GAME:
+            break;
+            
+            case GAME_OVER:
+            break;
+        }
+    }
+    
+    public void setState(GameState state)
+    {
+        _state = state;
+    }
+    
+    public GameState getState()
+    {
+        return _state;
+    }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        Tank tankPlayer1 = new Tank(Tank.Type.PLAYER_1);
-        addObject(tankPlayer1,225,800);
-        Tank tankPlayer2 = new Tank(Tank.Type.PLAYER_2);
-        addObject(tankPlayer2, 609, 800);
-        Tank tankEnemy = new Tank(Tank.Type.ENEMY);
-        addObject(tankEnemy, 416, 700);
-        
         Camp camp = new Camp();
         addObject(camp, 416, 800);
+        
+        Tank tankPlayer1 = new Tank(Tank.Type.PLAYER_1);
+        addObject(tankPlayer1,225,800);
+        
+        Tank tankPlayer2 = new Tank(Tank.Type.PLAYER_2);
+        addObject(tankPlayer2, 609, 800);
+        
+        
+        Tank tankEnemy = new Tank(Tank.Type.ENEMY);
+        addObject(tankEnemy, 32, 32);
+        
+        Tank tankEnemy2 = new Tank(Tank.Type.ENEMY);
+        addObject(tankEnemy2, 32*15, 32);
+        
+        Tank tankEnemy3 = new Tank(Tank.Type.ENEMY);
+        addObject(tankEnemy3, 32*22, 32);        
         
         //Bonus bonus = new Bonus(); //тест бонуса лопата
         //addObject(bonus, 290, 736);
 
-        drawMap();
+        buildMap();
     }
     
-    private void drawMap()
+    public void started(){
+
+    }
+    
+    private void buildMap()
     {
-        Map map = new Map(this);
+        _map.build(this);
+    }
+    
+    public Map getMap()
+    {
+        return _map;
     }
 }

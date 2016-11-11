@@ -22,7 +22,7 @@ public class Tank extends Actor
     
     private static final String[] AnimListYellow = {"player_tank_right_anim1.png", "player_tank_right_anim2.png"};
     private static final String[] AnimListGreen  = {"player2_tank_anim1.png", "player2_tank_anim2.png"};
-    private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim1.png"};
+    private static final String[] AnimListGrey   = {"enemy_tank_anim1.png", "enemy_tank_anim2.png"};
     
     private Type _type = Type.ENEMY;
     
@@ -41,18 +41,21 @@ public class Tank extends Actor
     private boolean _bulletFired = false;
     private boolean _btnPressedPrev = false;
     
+    private boolean _moved = false;
+    private int _distNeeded = 9;
+    
     private final GreenfootSound _fireSound = new GreenfootSound("fire.mp3");
     
     private Animation _animControl;
+    
+    private AI _intelegence;
+    private int _distMoved = 0;
+    
 
     public Tank(Type type)
     {
-        _type = type;
-        
-        setDirection(Direction.UP);
-        
+        _type = type;        
         _reloadTimer.setRange(RELOAD_TIME_LVL1);
-        //_reloadTimer.reset();
         
         final int animDelay = 50;
         
@@ -67,10 +70,17 @@ public class Tank extends Actor
             
             case ENEMY:
                 _animControl = new Animation(AnimListGrey, BattleCity.SCALE, animDelay);
+                _intelegence = new AI(this);
             break;
         }
         
+        _direction = Direction.RIGHT;
         updateAnimation();
+    }
+    
+    public void started()
+    {
+    
     }
     
     public void act() 
@@ -90,6 +100,14 @@ public class Tank extends Actor
             break;
             
             case ENEMY:
+                if(_distMoved >= _distNeeded * BattleCity.SCALE || !_moved){
+                    _distMoved = 0;
+                    _distNeeded =  9 * (Greenfoot.getRandomNumber(5) + 1);
+                    setDirection(_intelegence.makeDecision());
+                }
+                
+                makeFire();
+                moveForward();
             break;
         }
     }    
@@ -99,6 +117,10 @@ public class Tank extends Actor
         if(time >= 0){
             _reloadTimer.setRange(time);
         }
+    }
+    
+    public Direction getDirection(){
+        return _direction;
     }
     
     public Type getType()
@@ -134,35 +156,19 @@ public class Tank extends Actor
         boolean btnPressed = false;
         
         if(Greenfoot.isKeyDown(layout[0])){
-            _direction = Direction.UP;
-            setRotation(Direction.UP.getAngle());
-            
-            if(_mirrorH) mirrorHorizontally();
-            
+            setDirection(Direction.UP);
             moveForward();
         }
         else if(Greenfoot.isKeyDown(layout[1])){
-            _direction = Direction.DOWN;
-            setRotation(Direction.UP.getAngle());
-            
-            if(!_mirrorH) mirrorHorizontally();
-            
+            setDirection(Direction.DOWN);
             moveForward();
         }
         else if(Greenfoot.isKeyDown(layout[2])) {
-            _direction = Direction.LEFT;
-            setRotation(Direction.RIGHT.getAngle());
-            
-            if(!_mirrorH) mirrorHorizontally();
-            
+            setDirection(Direction.LEFT);
             moveForward();
         }        
         else if(Greenfoot.isKeyDown(layout[3])) {
-            _direction = Direction.RIGHT;
-            setRotation(Direction.RIGHT.getAngle());
-            
-            if(_mirrorH) mirrorHorizontally();
-            
+            setDirection(Direction.RIGHT);
             moveForward();
         }
         
@@ -177,17 +183,27 @@ public class Tank extends Actor
         _btnPressedPrev = btnPressed;
     }
     
-    private boolean canMove(){
+    public boolean canMove()
+    {
         Wall wall = (Wall)getOneIntersectingObject(Wall.class); 
         Camp camp = (Camp)getOneIntersectingObject(Camp.class); 
-        Tank tank = (Tank)getOneIntersectingObject(Tank.class); 
-
-        return wall == null && tank == null && camp == null && !atBorder(); 
+        Tank tank = (Tank)getOneIntersectingObject(Tank.class);
+        
+        boolean notTank = (tank == null);
+        
+        if(!notTank){
+            if(isPlayer()){
+                notTank = tank.isPlayer();
+            }else{
+                notTank = !tank.isPlayer();
+            }
+        }
+        
+        return wall == null && notTank && camp == null && !atBorder((6) * BattleCity.SCALE); 
     }
     
-    private boolean atBorder(){
-        int dist = (7) * BattleCity.SCALE;
-        
+    public boolean atBorder(int dist)
+    {
         int map_w = getWorld().getWidth();
         int map_h = getWorld().getHeight();
         
@@ -221,35 +237,59 @@ public class Tank extends Actor
         return false;
     }
     
-    private void mirrorHorizontally(){
+    private void mirrorHorizontally()
+    {
         _animControl.mirrorHorizontally();
         _mirrorH = !_mirrorH;
     }
     
-    private void mirrorVertically(){
+    private void mirrorVertically()
+    {
         _animControl.mirrorVertically();
         _mirrorV = !_mirrorV;
     }
     
     private void setDirection(Direction direction)
     {
-        setRotation(direction.getAngle());
         _direction = direction;
+        
+        if(_mirrorV)  mirrorVertically();
+        if(_mirrorH) mirrorHorizontally();
+        
+        switch(direction){
+            case DOWN:   
+                mirrorVertically();
+            case UP:
+                setRotation(Direction.UP.getAngle());
+            break;
+            
+            case LEFT:    
+                mirrorVertically();
+            case RIGHT:
+                setRotation(Direction.RIGHT.getAngle());
+            break;
+        }
     }
     
     private void moveForward()
     {
         _prev_x = getX();
         _prev_y = getY();
-            
+          
+        setRotation(_direction.getAngle());
+        //move(_speed);
+        
         setLocation(getX() + _speed * _direction._x , getY() + _speed * _direction._y);
         
         if(!canMove()) {
             setLocation(_prev_x, _prev_y);
+            _moved = false;
+        }else{
+            _distMoved += _speed;
+            _moved = true;
         }
 
         updateAnimation();
-         //move(_speed);
     }
     
     private void makeFire()
@@ -259,7 +299,9 @@ public class Tank extends Actor
             
             getWorld().addObject(new Bullet(_direction, Bullet.SPEED_LVL_1, _type, this), getX() + _direction._x * 9*4, getY() + _direction._y * 9*4);
                        
-            if(isPlayer()) _fireSound.play();
+            if(isPlayer()){
+                _fireSound.play();
+            }
         }
         
     }
