@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Display
+comment1.params=
+comment1.target=Display()
+comment2.params=x\ y
+comment2.target=void\ update(int,\ int)
+numComments=3

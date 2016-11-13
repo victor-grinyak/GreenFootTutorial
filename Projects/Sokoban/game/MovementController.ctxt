@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=MovementController
+comment1.params=x
+comment1.target=void\ set_x(int)
+comment10.params=
+comment10.target=boolean\ blockBumpedWall()
+comment2.params=
+comment2.target=int\ get_x()
+comment3.params=y
+comment3.target=void\ set_y(int)
+comment4.params=
+comment4.target=int\ get_y()
+comment5.params=RIGHT\ LEFT\ UP\ DOWN
+comment5.target=void\ moveWith(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment6.params=direction
+comment6.target=void\ moveIt(java.lang.String)
+comment7.params=myClass
+comment7.target=void\ checkBumpWith(java.lang.Class)
+comment8.params=actor
+comment8.target=java.lang.String\ identifyCollisionSide(greenfoot.Actor)
+comment9.params=myClass
+comment9.target=void\ stopIfCollideWith(java.lang.Class)
+numComments=11
