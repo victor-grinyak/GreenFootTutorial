@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Cell
+comment0.text=\n\ Write\ a\ description\ of\ class\ Cell\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=x\ y\ state\ flag
+comment1.target=Cell(int,\ int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=cell
+comment3.target=int\ recieve_click(Cell)
+numComments=4

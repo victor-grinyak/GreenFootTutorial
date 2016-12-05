@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=MyWorld
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=start\ end
+comment1.target=int\ getRandomNumber(int,\ int)
+comment2.params=
+comment2.target=MyWorld()
+comment3.params=
+comment3.target=int[][]\ getCounts()
+comment4.params=
+comment4.target=Cell[][]\ getMap()
+comment5.params=
+comment5.target=int\ getFlagsCount()
+numComments=6
