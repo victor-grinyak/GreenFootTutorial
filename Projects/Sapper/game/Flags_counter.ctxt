@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Flags_counter
+comment0.text=\n\ Write\ a\ description\ of\ class\ Flags_counter\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Flags_counter()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ Flags_counter\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3
