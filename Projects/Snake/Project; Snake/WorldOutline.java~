@@ -1,0 +1,36 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.Color;
+/**
+ * Write a description of class WorldOutline here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class WorldOutline extends Actor
+{
+
+    public WorldOutline()
+    {
+        GreenfootImage image = new GreenfootImage(610, 410);
+        image.setColor(Color.BLACK);
+        int x = 600, y = 400;
+        for(int i = 0; i < 10; i++)
+        {
+          image.drawRect(i, i, x, y); 
+          x-= 2;
+          y-=2;
+        }
+        
+        setImage(image);
+    }
+
+    
+    /**
+     * Act - do whatever the WorldOutline wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        // Add your action code here.
+    }    
+}
