@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ScenarioLoader
+comment1.params=world
+comment1.target=ScenarioLoader(greenfoot.World)
+comment2.params=
+comment2.target=void\ loadLevel()
+numComments=3

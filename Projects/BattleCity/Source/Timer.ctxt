@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Timer
+comment1.params=
+comment1.target=long\ getTime()
+comment2.params=
+comment2.target=void\ reset()
+comment3.params=range
+comment3.target=void\ setRange(long)
+comment4.params=
+comment4.target=long\ getRange()
+comment5.params=
+comment5.target=boolean\ inRange()
+comment6.params=
+comment6.target=boolean\ outRange()
+comment7.params=
+comment7.target=void\ updateFinishTime()
+numComments=8

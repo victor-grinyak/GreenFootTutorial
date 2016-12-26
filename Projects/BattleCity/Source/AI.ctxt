@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=AI
+comment0.text=\n\ Write\ a\ description\ of\ class\ AI\ here.\n\ \n\ @author\ Fedor\ Kuzin\n\ @version\ 1\n
+comment1.params=tank
+comment1.target=AI(Tank)
+comment2.params=wrld\ x\ y
+comment2.target=java.util.List\ getWalls(greenfoot.World,\ int,\ int)
+comment3.params=direction
+comment3.target=int\ getCaseWeight(Direction)
+comment4.params=vec\ direction\ repeat
+comment4.target=void\ appendDirection(java.util.Vector,\ Direction,\ int)
+comment5.params=
+comment5.target=java.util.Vector\ getDirections()
+comment6.params=
+comment6.target=Direction\ getCampSide()
+comment7.params=
+comment7.target=int\ getSqrDistanceToCamp()
+comment8.params=
+comment8.target=Direction\ makeDecision()
+numComments=9

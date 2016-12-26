@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=BattleCity
+comment0.text=\n\ \u041A\u043B\u043E\u043D\ \u0438\u0433\u0440\u044B\ BattleCity\n\ \n\ @author\ Fedor\ Kuzin\n\ @author\ Vitaliy\ Vitushkin\n\ @version\ 1\n
+comment1.params=
+comment1.target=BattleCity()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=state
+comment3.target=void\ setState(BattleCity.GameState)
+comment4.params=
+comment4.target=BattleCity.GameState\ getState()
+comment5.params=
+comment5.target=void\ prepare()
+comment5.text=\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\n
+comment6.params=
+comment6.target=void\ started()
+comment7.params=
+comment7.target=void\ buildMap()
+comment8.params=
+comment8.target=Map\ getMap()
+numComments=9

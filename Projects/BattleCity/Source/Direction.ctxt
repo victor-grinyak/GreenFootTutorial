@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Direction
+comment1.params=x\ y
+comment1.target=Direction(int,\ int)
+comment2.params=
+comment2.target=int\ getAngle()
+numComments=3

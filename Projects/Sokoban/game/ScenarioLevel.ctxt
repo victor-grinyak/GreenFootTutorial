@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=ScenarioLevel
+comment1.params=levelNumber
+comment1.target=java.lang.String\ getScenarioLevel(int)
+numComments=2

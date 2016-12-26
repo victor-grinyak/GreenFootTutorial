@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Bullet
+comment0.text=\n\ Write\ a\ description\ of\ class\ Bullet\ here.\n\ \n\ @author\ Fedor\ Kuzin\ \n\ @version\ 1\n
+comment1.params=direction\ speed\ ownerType\ owner
+comment1.target=Bullet(Direction,\ int,\ Tank.Type,\ Tank)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ hitWalls()
+comment4.params=
+comment4.target=void\ hitTank()
+comment5.params=
+comment5.target=void\ hitBullet()
+comment6.params=
+comment6.target=void\ hitCamp()
+comment7.params=
+comment7.target=void\ makeExplosion()
+comment8.params=
+comment8.target=void\ destroy()
+numComments=9
