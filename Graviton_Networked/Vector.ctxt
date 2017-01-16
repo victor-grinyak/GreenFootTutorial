@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Vector
+comment0.text=\n\ A\ 2D\ vector.\n\ \n\ @author\ Poul\ Henriksen\n
+comment1.params=
+comment1.target=Vector()
+comment2.params=direction\ length
+comment2.target=Vector(int,\ double)
+comment3.params=direction
+comment3.target=void\ setDirection(int)
+comment3.text=\n\ Set\ the\ direction\ of\ this\ vector.\n
+comment4.params=other
+comment4.target=void\ add(Vector)
+comment4.text=\n\ Add\ other\ vector\ to\ this\ vector.\n
+comment5.params=
+comment5.target=double\ getX()
+comment6.params=
+comment6.target=double\ getY()
+comment7.params=
+comment7.target=int\ getDirection()
+comment8.params=
+comment8.target=double\ getLength()
+comment9.params=
+comment9.target=Vector\ copy()
+comment9.text=\n\ Create\ a\ copy\ of\ this\ vector.\n
+numComments=10

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Bullet
+comment0.text=\n\ A\ bullet.\ This\ is\ fired\ by\ the\ rockets.\n\ \n\ @author\ Poul\ Henriksen\n
+comment1.params=speed\ rotation
+comment1.target=Bullet(Vector,\ int)
+comment1.text=\n\ Creates\ a\ new\ Bullet\n
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ Called\ when\ the\ bullet\ is\ aded\ to\ the\ world\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ The\ Bullet's\ act\ method\n
+numComments=4

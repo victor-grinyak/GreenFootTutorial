@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=MovingThing
+comment0.text=\n\ A\ thing\ that\ can\ move\ around\ with\ a\ certain\ speed.\n\ You\ do\ not\ need\ to\ modify\ this\ class\n\ \n\ @author\ Poul\ Henriksen\n
+comment1.params=
+comment1.target=MovingThing()
+comment2.params=
+comment2.target=void\ reset()
+comment2.text=\n\ Sets\ speed\ to\ 0\n
+comment3.params=
+comment3.target=void\ move()
+comment3.text=\n\ Move\ forward\ one\ step.\n
+comment4.params=x\ y
+comment4.target=void\ setLocation(double,\ double)
+comment5.params=x\ y
+comment5.target=void\ setLocation(int,\ int)
+numComments=6

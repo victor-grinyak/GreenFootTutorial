@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Block
+comment0.text=\n\ Sits\ there\ and\ does\ absolutely\ nothing.\ Causes\ a\ player\ to\ die\ if\ their\ rocket\ hits\ it,\ and\ disappears\ if\ hit\ by\ a\ bullet.\n\ \n\ @author\ Michael\ Berry\n\ @version\ 22.02.2008\n
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment1.text=\n\ Called\ when\ the\ Block\ is\ added\ to\ the\ world\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ If\ the\ block\ is\ shot,\ it\ will\ disappear.\n
+numComments=3

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=GravitonWorld
+comment1.params=
+comment1.target=GravitonWorld()
+comment1.text=\n\ Create\ the\ world\ and\ add\ objects.\n
+comment2.params=
+comment2.target=void\ nextLevel()
+comment2.text=\n\ Sets\ up\ the\ next\ level\n
+comment3.params=won\ rocket
+comment3.target=void\ end(boolean,\ Rocket)
+comment3.text=\n\ This\ method\ is\ called\ whenever\ a\ player\ wins\ or\ loses.\n
+comment4.params=object\ x\ y
+comment4.target=void\ addObject(greenfoot.Actor,\ int,\ int)
+comment4.text=\n\ Overrides\ the\ addObject\ method\ in\ world.\n\ Used\ to\ store\ a\ reference\ to\ any\ blocks\ and\ goals\ that\ are\ being\ added\ to\ the\ world,\ so\ they\ can\ easily\ be\ removed\ later.\n
+comment5.params=
+comment5.target=void\ removeAll()
+comment5.text=\n\ Remove\ all\ actors\ from\ the\ world\n
+comment6.params=level
+comment6.target=void\ makeLevel(int)
+comment6.text=\n\ Make\ a\ certain\ level\n
+numComments=7
