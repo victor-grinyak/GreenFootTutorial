@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Rocket
+comment1.params=remote\ x\ y\ connection
+comment1.target=Rocket(boolean,\ int,\ int,\ Connection)
+comment1.text=\n\ Sets\ up\ gravity\n
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ Called\ when\ the\ rocket\ is\ added\ to\ the\ world.\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Do\ what\ the\ rocket\ wants.\n
+comment4.params=
+comment4.target=void\ reset()
+comment4.text=\n\ Resets\ the\ rocket\n
+comment5.params=ignited
+comment5.target=void\ ignite(boolean)
+comment5.text=\n\ Controls\ the\ rockets\ movement\ based\ on\ whether\ the\ rocket\ is\ ignited\ or\ not.\n\ @param\ ignited\ True\ if\ the\ rocket\ is\ ignited\n
+comment6.params=
+comment6.target=void\ move()
+comment6.text=\n\ Moves\ the\ rocket\ after\ calculations\ on\ its\ speed\ and\ direction\ are\ complete.\n
+comment7.params=
+comment7.target=boolean\ outsideWorld()
+comment7.text=\n\ Is\ the\ rocket\ outside\ the\ world?\n\ @return\ true\ if\ the\ rocket\ is\ outside\ the\ world.\n
+comment8.params=
+comment8.target=void\ fire()
+comment8.text=\n\ Fire\ a\ bullet\ if\ the\ gun\ is\ ready.\n
+numComments=9

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Goal
+comment0.text=\n\ Sits\ there\ and\ does\ absolutely\ nothing.\ Causes\ a\ player\ to\ win\ if\ their\ rocket\ hits\ it.\n\ \n\ @author\ Michael\ Berry\n\ @version\ 22.02.2008\n
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+numComments=2

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Score
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment1.text=\n\ Called\ when\ the\ object\ is\ added\ to\ the\ world\n
+comment2.params=x
+comment2.target=void\ updateScore(int)
+comment2.text=\n\ Updates\ the\ score.\n\ @param\ x\ The\ number\ of\ points\ to\ update\ the\ score\ by.\ Negative\ values\ of\ x\ take\ away\ points\n
+comment3.params=
+comment3.target=int\ getScore()
+comment3.text=\n\ Returns\ the\ numerical\ value\ of\ the\ score.\n\ @return\ The\ score.\n
+numComments=4
