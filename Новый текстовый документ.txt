@@ -1,0 +1,93 @@
+class Object
+void doIt()
+{
+}    
+
+
+
+    class Tree
+    void doIt()
+    {
+       fall();
+    }  
+
+
+
+    class Rock
+    void doIt()
+    {
+       jump();
+    }  
+
+
+Tree t1 = new Tree();
+Rock r1 = new Rock();
+
+
+Object o1;
+
+o1 = t1;
+o1.doIt();
+
+o1 = r1;
+o1.doIt();
+
+
+
+
+
+
+Тема 1. Сущности и атрибуты. Отношения в базе данных. Супертипы и подтипы. Бизнес-правила. Алгебра отношений в базе данных.
+
+Задача 1
+Read the given business scenario. Draw the entities TEACHER and COURSE and CLASS. List the attributes underneath each entity. Specify whether they are mandatory or optional. Identify the UIDs. Write out the relationship in English, including optionality and cardinality.“We have several teachers at our school. A teacher can be assigned up to three classes per semester. If a teacher is on sabbatical, he doesn’t teach that semester. We keep a record of the teacher’s first name, last name, address, phone number, and email address.”“Our school offers many courses -- such as Data Modeling, Introduction to SQL, Trigo-nometry, Physics, and Biology. Each course has a code. For example: Data Modeling would be DM001, Trigonometry would be TR004, etc. During each semester, a course may be taught in several classes -- so there could be two classes of Physics, three clas-ses of Biology, etc. Each class can be taught by only one teacher. We assign a unique ID for each class, and we also keep track of the day it is taught, the time, and the classroom.”
+
+Задача 2
+Draw an entity relationship diagram to represent the following:a.  Each CLUB must be assigned to one and only one DEPARTMENTb.  Each DEPARTMENT may be responsible for one or more CLUBsc.   Each STUDENT may join one or more CLUBsd.  Each CLUB may be composed of one or more STUDENTs
+
+
+Тема 2. Нормализация и нормальные формы. Дуги, иерархии и рекурсивное моделирование. Моделирование исторических данных. Преобразования. Жизненный цикл разработки.
+Задача 1
+A show ticket is purchased from an agent, the box office, or the Internet. A ticket has a description, an event, a date and a price. An agent has a name and a phone number. The box office has an address and a phone number. The Internet has a URL address.Draw the entities and represent the mutually exclusive relationship
+
+Задача 2
+Each police officer may issue speeding tickets to motorists in an assigned area. Originally, the attribute date was modeled as part of the SPEEDING TICKET entity. However, the city police department wants to see if there is a relationship between weather and the frequency of speeding tickets -- do people drive faster on nice sunny days? Are there more tickets in hot weather or cool weather?
+
+
+Тема 3. Основные конструкции языка SQL.
+Задача 1
+The following query was supposed to return the CD title “Carpe Diem" but no rows were returned. Correct the mistake in the statement and show the output.SELECT produce, titleFROM d_cdsWHERE title = 'carpe diem' ;
+
+Задача 2
+The manager of DJs on Demand would like a report of all the CD titles and years of CDs that were produced before 2000.
+
+
+Тема 4. Однострочные функции. Соединения таблиц.
+Задача 1
+Format a query from the Global Fast Foods f_promotional_menus table to print out the start_date of promotional code 110 as: The promotion began on the tenth of February 2004.
+Задача 2
+Convert today’s date to a format such as: “Today is the Twentieth of March, Two Thousand Four”
+Задача 3
+Create a cross-join that displays the last name and department name from the employees and de-partments tables.
+Задача 4
+Create a query that uses a natural join to join the departments table by the location_id column. Restrict the output to only department IDs of 20 and 50. Display the department id, department name, location id, and city.
+
+
+Тема 5. Группировка данных. Подзапросы.
+Задача 1
+Define and give an example of the seven group functions: AVG, COUNT, MAX, MIN, STDDEV, SUM, and VARIANCE
+Задача 2
+What are the department names of the Oracle departments that have the same location ID as Seattle?
+
+Тема 6. Создание таблиц и обновление данных. Ограничения.
+Create a new table using a subquery. Name the new table your last name -- e.g., smith_table. Using a subquery, copy grad_candidates into smith_table
+
+Тема 7. Последовательности и синонимы. Привилегии и регулярные выражения. Операции над базами данных
+Задача 1
+Write the CREATE TABLE statement for the Global Fast Foods locations table to define the constraints at the column level.
+Задача 2
+Using the column information for the animals table below, name constraints where applicable at the table level, otherwise name them at the column level. Define the primary key (animal_id). The license_tag_number must be unique. The admit_date and vaccination_date columns cannot contain null values. 
+
+Тема 8. Построение запросов к нереляционным базам данных.
+
+
