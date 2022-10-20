@@ -1,3 +1,6 @@
+
+add
+
 class Object
 void doIt()
 {
